@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# zefame_all_platforms_safe.py  –  drop-in replacement with offline fallback
 import requests, sys, json, uuid, time, os, argparse
 import concurrent.futures
 from datetime import datetime
@@ -219,4 +218,5 @@ def main():
             print(f"\n{Fore.YELLOW}Stopped by user{Style.RESET_ALL}")
 
 if __name__ == "__main__":
+
     main()

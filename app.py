@@ -58,6 +58,13 @@ if not CFG.get("success"):
     print(f"{Fore.RED}Invalid config{Style.RESET_ALL}")
     sys.exit(1)
 PLATFORMS = CFG["data"]
+# ---------- video-id helper ----------
+def parse_video_id(platform, url):
+    if platform == "tiktok":
+        r = safe_post("https://zefame-free.com/api_free.php?",
+                      {"action": "checkVideoId", "link": url})
+        return r.json().get("data", {}).get("videoId") if r else None
+    return url.split("/")[-1].split("?")[0]
 
 # ---------- pretty names ----------
 PRETTY = {
@@ -218,5 +225,4 @@ def main():
             print(f"\n{Fore.YELLOW}Stopped by user{Style.RESET_ALL}")
 
 if __name__ == "__main__":
-
     main()
